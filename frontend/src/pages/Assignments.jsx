@@ -7,18 +7,21 @@ export default function Assignments() {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch("http://localhost:5000/api/assignments")
-      .then(res => res.json())
-      .then(data => {
-        setAssignments(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error(err);
-        setLoading(false);
-      });
-  }, []);
+ useEffect(() => {
+  const API = import.meta.env.VITE_API_BASE_URL;
+
+  fetch(`${API}/api/assignments`)
+    .then(res => res.json())
+    .then(data => {
+      setAssignments(data);
+      setLoading(false);
+    })
+    .catch(err => {
+      console.error(err);
+      setLoading(false);
+    });
+}, []);
+
 
   if (loading) {
     return (
