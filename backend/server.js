@@ -9,24 +9,30 @@ import sqlRoutes from "./routes/sqlRoutes.js";
 
 dotenv.config();
 
-// ✅ FIRST initialize app
 const app = express();
 
-// ✅ Middlewares
-app.use(cors());
+// ✅ FIXED CORS (important for Vercel + mobile)
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
+
 app.use(express.json());
 
-// ✅ Routes (AFTER app is created)
+// Routes
 app.use("/api/projects", projectRoutes);
 app.use("/api/assignments", assignmentRoutes);
 app.use("/api/sql", sqlRoutes);
 
-// ✅ Health check
+// Health check
 app.get("/", (req, res) => {
   res.send("CipherSQLStudio Backend is running ✅");
 });
 
-// ✅ MongoDB connection
+// MongoDB connection
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {

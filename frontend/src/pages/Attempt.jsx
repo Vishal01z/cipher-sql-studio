@@ -8,10 +8,14 @@ export default function Attempt() {
   const [assignment, setAssignment] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/assignments/${id}`)
-      .then(res => res.json())
-      .then(data => setAssignment(data));
-  }, [id]);
+  const API = import.meta.env.VITE_API_BASE_URL;
+
+  fetch(`${API}/api/assignments/${id}`)
+    .then(res => res.json())
+    .then(data => setAssignment(data))
+    .catch(err => console.error(err));
+}, [id]);
+
 
   if (!assignment) {
     return (

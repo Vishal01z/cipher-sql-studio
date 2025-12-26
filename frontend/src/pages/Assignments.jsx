@@ -10,7 +10,8 @@ export default function Assignments() {
  useEffect(() => {
   const API = import.meta.env.VITE_API_BASE_URL;
 
-  fetch(`${API}/api/assignments`)
+fetch(`${API}/api/assignments`)
+
     .then(res => res.json())
     .then(data => {
       setAssignments(data);
