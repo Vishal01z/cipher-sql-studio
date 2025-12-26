@@ -24,6 +24,7 @@ export default function Home() {
     return saved ? JSON.parse(saved) : true;
   });
   const [isRunning, setIsRunning] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   /* ---------------- Theme Toggle ---------------- */
   const toggleDarkMode = () => {
@@ -39,7 +40,9 @@ export default function Home() {
     setResult([]);
 
     try {
-      const res = await fetch("http://localhost:5000/api/sql/run", {
+      const API = import.meta.env.VITE_API_BASE_URL;
+
+      const res = await fetch(`${API}/api/sql/run`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query }),
@@ -62,6 +65,8 @@ export default function Home() {
   /* ---------------- Copy Project ID ---------------- */
   const copyProjectId = () => {
     navigator.clipboard.writeText(projectId);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -71,28 +76,44 @@ export default function Home() {
         <div className="header-left">
           <h1 className="logo">
             <span className="logo-icon">🗄️</span>
-            CipherSQLStudio
+            <span className="logo-text">CipherSQLStudio</span>
           </h1>
 
           <div className="project-info">
-            <span>Project ID:</span>
-            <code>{projectId.slice(0, 8)}...</code>
-            <button onClick={copyProjectId}>📋</button>
+            <span className="project-label">Project ID:</span>
+            <code className="project-id">{projectId.slice(0, 8)}...</code>
+            <button 
+              className={`copy-btn ${copied ? 'copied' : ''}`}
+              onClick={copyProjectId}
+              title="Copy full project ID"
+            >
+              {copied ? '✓' : '📋'}
+            </button>
           </div>
         </div>
 
-        <button className="theme-toggle" onClick={toggleDarkMode}>
+        <button 
+          className="theme-toggle" 
+          onClick={toggleDarkMode}
+          title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+        >
           {darkMode ? "☀️" : "🌙"}
         </button>
       </header>
 
       {/* ---------- SQL Editor ---------- */}
-      <div className="editor-container">
-        <SqlEditor
-          query={query}
-          setQuery={setQuery}
-          darkMode={darkMode}
-        />
+      <div className="editor-section">
+        <div className="section-header">
+          <h3>SQL Editor</h3>
+          <span className="hint">Press Ctrl+Enter to run query</span>
+        </div>
+        <div className="editor-container">
+          <SqlEditor
+            query={query}
+            setQuery={setQuery}
+            darkMode={darkMode}
+          />
+        </div>
       </div>
 
       {/* ---------- Toolbar ---------- */}
@@ -102,38 +123,74 @@ export default function Home() {
           onClick={runQuery}
           disabled={isRunning}
         >
-          {isRunning ? "Running..." : "▶ Run Query"}
+          <span className="btn-icon">{isRunning ? "⟳" : "▶"}</span>
+          <span className="btn-text">{isRunning ? "Running..." : "Run Query"}</span>
         </button>
+        
+        <div className="toolbar-info">
+          {result.length > 0 && (
+            <span className="result-count">
+              {result.length} row{result.length !== 1 ? 's' : ''} returned
+            </span>
+          )}
+        </div>
       </div>
 
       {/* ---------- Results ---------- */}
-      <div className="results-container">
-        {error && <p className="error">{error}</p>}
+      <div className="results-section">
+        <div className="section-header">
+          <h3>Results</h3>
+        </div>
 
-        {result.length > 0 && (
-          <table>
-            <thead>
-              <tr>
-                {Object.keys(result[0]).map((col) => (
-                  <th key={col}>{col}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {result.map((row, i) => (
-                <tr key={i}>
-                  {Object.values(row).map((val, j) => (
-                    <td key={j}>{String(val)}</td>
+        <div className="results-container">
+          {error && (
+            <div className="error-message">
+              <span className="error-icon">⚠️</span>
+              <div className="error-content">
+                <strong>Error:</strong>
+                <p>{error}</p>
+              </div>
+            </div>
+          )}
+
+          {result.length > 0 && (
+            <div className="table-wrapper">
+              <table className="results-table">
+                <thead>
+                  <tr>
+                    {Object.keys(result[0]).map((col) => (
+                      <th key={col}>{col}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {result.map((row, i) => (
+                    <tr key={i}>
+                      {Object.values(row).map((val, j) => (
+                        <td key={j}>{String(val)}</td>
+                      ))}
+                    </tr>
                   ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
+                </tbody>
+              </table>
+            </div>
+          )}
 
-        {!error && result.length === 0 && (
-          <p className="empty">No results</p>
-        )}
+          {!error && result.length === 0 && !isRunning && (
+            <div className="empty-state">
+              <div className="empty-icon">📊</div>
+              <p>No results to display</p>
+              <span className="empty-hint">Run a query to see results here</span>
+            </div>
+          )}
+
+          {isRunning && (
+            <div className="loading-state">
+              <div className="spinner"></div>
+              <p>Executing query...</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

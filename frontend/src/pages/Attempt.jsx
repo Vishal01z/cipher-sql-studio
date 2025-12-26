@@ -20,26 +20,38 @@ export default function Attempt() {
       </div>
     );
   }
-return (
-  <div className="attempt-page">
-    <div className="question-box">
-      <h2>{assignment.title}</h2>
 
-      <span className="label">Question:</span>
-      <p>{assignment.question}</p>
+  return (
+    <>
+      <div className="attempt-container">
+        <div className="assignment-header">
+          <h2>{assignment.title}</h2>
+          <span className={`badge badge-${assignment.difficulty.toLowerCase()}`}>
+            {assignment.difficulty}
+          </span>
+        </div>
 
-      <span className="label">Schema:</span>
-      <p>{assignment.schemaInfo}</p>
+        <div className="assignment-details">
+          <div className="detail-section">
+            <div className="section-label">Question</div>
+            <div className="section-content">{assignment.question}</div>
+          </div>
 
-      <span className="label">Sample Data:</span>
-      <div className="sample-data">
-        {assignment.sampleData}
+          <div className="detail-section">
+            <div className="section-label">Schema</div>
+            <div className="section-content code-content">{assignment.schemaInfo}</div>
+          </div>
+
+          <div className="detail-section">
+            <div className="section-label">Sample Data</div>
+            <div className="section-content code-content">
+              <pre>{assignment.sampleData}</pre>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div className="editor-wrapper">
       <Home />
-    </div>
-  </div>
-);
+    </>
+  );
 }
