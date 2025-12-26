@@ -1,0 +1,65 @@
+/* Page wrapper */
+.attempt-page {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Question box */
+.question-box {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Question title */
+.question-box h2 {
+  margin-bottom: 12px;
+}
+
+/* Labels */
+.label {
+  font-weight: 600;
+  display: block;
+  margin-top: 12px;
+}
+
+/* Schema text */
+.question-box p {
+  margin: 6px 0;
+}
+
+/* Sample data */
+.sample-data {
+  margin-top: 8px;
+  background: #f7f7f7;
+  padding: 12px;
+  border-radius: 6px;
+  font-family: monospace;
+  white-space: pre-line;
+  font-size: 14px;
+}
+
+/* Editor section */
+.editor-wrapper {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Make editor full width */
+.editor-wrapper > * {
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .attempt-page {
+    padding: 0 12px;
+  }
+}
