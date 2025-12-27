@@ -7,22 +7,26 @@ export default function Assignments() {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
- useEffect(() => {
-  const API = import.meta.env.VITE_API_BASE_URL;
+  // ✅ FRONTEND-ONLY (NO API)
+  useEffect(() => {
+    const MOCK_ASSIGNMENTS = [
+      {
+        _id: "1",
+        title: "Find Average Salary",
+        difficulty: "Easy",
+        description: "Write an SQL query to find the average salary."
+      },
+      {
+        _id: "2",
+        title: "Find Highest Salary",
+        difficulty: "Easy",
+        description: "Write an SQL query to find the highest salary."
+      }
+    ];
 
-fetch(`${API}/api/assignments`)
-
-    .then(res => res.json())
-    .then(data => {
-      setAssignments(data);
-      setLoading(false);
-    })
-    .catch(err => {
-      console.error(err);
-      setLoading(false);
-    });
-}, []);
-
+    setAssignments(MOCK_ASSIGNMENTS);
+    setLoading(false);
+  }, []);
 
   if (loading) {
     return (
@@ -48,25 +52,22 @@ fetch(`${API}/api/assignments`)
                 {a.difficulty}
               </span>
             </div>
-            
+
             <p className="description">{a.description}</p>
 
             <div className="card-footer">
-              <button 
+              <button
                 className="attempt-btn"
                 onClick={() => navigate(`/attempt/${a._id}`)}
               >
-                <span>Start Assignment</span>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                Start Assignment
               </button>
             </div>
           </div>
         ))}
       </div>
 
-      {assignments.length === 0 && !loading && (
+      {assignments.length === 0 && (
         <div className="no-assignments">
           <p>No assignments available at the moment.</p>
         </div>
