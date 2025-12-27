@@ -34,39 +34,33 @@ export default function Home() {
   };
 
   /* ---------------- Run SQL Query ---------------- */
- /* ---------------- Run SQL Query (FRONTEND ONLY) ---------------- */
-const runQuery = async () => {
-  setIsRunning(true);
-  setError(null);
-  setResult([]);
+  const runQuery = async () => {
+    setIsRunning(true);
+    setError(null);
+    setResult([]);
 
-  // ⏳ fake delay to simulate server
-  setTimeout(() => {
-    const normalized = query.trim().toLowerCase();
+    try {
+      const API = import.meta.env.VITE_API_BASE_URL;
 
-    // ✅ CASE 1: Average salary
-    if (normalized.includes("avg") && normalized.includes("salary")) {
-      setResult([{ average_salary: 40000 }]);
+      const res = await fetch(`${API}/api/sql/run`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Query execution failed");
+      }
+
+      setResult(data.rows || []);
+    } catch (err) {
+      setError(err.message || "Server error while executing query");
+    } finally {
+      setIsRunning(false);
     }
-
-    // ✅ CASE 2: Select all
-    else if (normalized.startsWith("select")) {
-      setResult([
-        { id: 1, name: "Amit", salary: 30000 },
-        { id: 2, name: "Rohit", salary: 40000 },
-        { id: 3, name: "Neha", salary: 50000 }
-      ]);
-    }
-
-    // ❌ CASE 3: Invalid SQL
-    else {
-      setError("Syntax error in SQL query");
-    }
-
-    setIsRunning(false);
-  }, 800);
-};
-
+  };
 
   /* ---------------- Copy Project ID ---------------- */
   const copyProjectId = () => {
