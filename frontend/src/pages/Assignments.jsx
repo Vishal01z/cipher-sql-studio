@@ -2,27 +2,43 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Assignments.css";
 
+/* ✅ ADD: fallback JSON */
+import fallbackAssignments from "../data/assignments.json";
+
 export default function Assignments() {
   const [assignments, setAssignments] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  /* ✅ ADD */
+  const [usingFallback, setUsingFallback] = useState(false);
+
   const navigate = useNavigate();
 
- useEffect(() => {
-  const API = import.meta.env.VITE_API_BASE_URL;
+  useEffect(() => {
+    const API = import.meta.env.VITE_API_BASE_URL;
 
-fetch(`${API}/api/assignments`)
+    fetch(`${API}/api/assignments`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to fetch assignments");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setAssignments(data || []);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
 
-    .then(res => res.json())
-    .then(data => {
-      setAssignments(data);
-      setLoading(false);
-    })
-    .catch(err => {
-      console.error(err);
-      setLoading(false);
-    });
-}, []);
-
+        /* ✅ ADD: fallback logic */
+        setAssignments(fallbackAssignments);
+        setUsingFallback(true);
+        setError(null);
+        setLoading(false);
+      });
+  }, []);
 
   if (loading) {
     return (
@@ -32,33 +48,64 @@ fetch(`${API}/api/assignments`)
     );
   }
 
+  if (error) {
+    return (
+      <div className="assignments-container">
+        <div className="loading">{error}</div>
+      </div>
+    );
+  }
+
   return (
     <div className="assignments-container">
       <div className="header-section">
         <h1>SQL Assignments</h1>
         <p className="subtitle">Master SQL through hands-on practice</p>
+
+        {/* ✅ ADD: small info message */}
+        {usingFallback && (
+          <p style={{ color: "#facc15", marginTop: "8px" }}>
+            ⚠ Backend not connected — showing offline assignments
+          </p>
+        )}
       </div>
 
       <div className="assignments-grid">
-        {assignments.map(a => (
+        {assignments.map((a) => (
           <div className="assignment-card" key={a._id}>
             <div className="card-header">
               <h3>{a.title}</h3>
-              <span className={`badge badge-${a.difficulty.toLowerCase()}`}>
-                {a.difficulty}
-              </span>
+
+              {a.difficulty && (
+                <span
+                  className={`badge badge-${a.difficulty.toLowerCase()}`}
+                >
+                  {a.difficulty}
+                </span>
+              )}
             </div>
-            
+
             <p className="description">{a.description}</p>
 
             <div className="card-footer">
-              <button 
+              <button
                 className="attempt-btn"
                 onClick={() => navigate(`/attempt/${a._id}`)}
               >
                 <span>Start Assignment</span>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                >
+                  <path
+                    d="M6 12L10 8L6 4"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               </button>
             </div>
@@ -66,7 +113,7 @@ fetch(`${API}/api/assignments`)
         ))}
       </div>
 
-      {assignments.length === 0 && !loading && (
+      {assignments.length === 0 && (
         <div className="no-assignments">
           <p>No assignments available at the moment.</p>
         </div>

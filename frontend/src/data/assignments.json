@@ -1,0 +1,362 @@
+[
+  {
+    "title": "High Scoring Students",
+    "difficulty": "Easy",
+    "description": "Find students with marks greater than 80",
+    "question": "Write a SQL query to fetch students scoring more than 80 marks.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 78\n3 | Neha | CS | 92"
+  },
+  {
+    "title": "Course-wise Average Marks",
+    "difficulty": "Medium",
+    "description": "Calculate average marks for each course",
+    "question": "Write a SQL query to find average marks grouped by course.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 78\n3 | Neha | CS | 92"
+  },
+  {
+    "title": "Topper in Each Course",
+    "difficulty": "Hard",
+    "description": "Find top scoring student in each course",
+    "question": "Write a SQL query to find the highest scorer per course.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 78\n3 | Neha | CS | 92"
+  },
+  {
+    "title": "All Students List",
+    "difficulty": "Easy",
+    "description": "Retrieve all student records",
+    "question": "Write a SQL query to fetch all students from the database.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 78\n3 | Neha | CS | 92"
+  },
+  {
+    "title": "Students in CS Course",
+    "difficulty": "Easy",
+    "description": "Filter students by specific course",
+    "question": "Write a SQL query to find all students enrolled in Computer Science course.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 78\n3 | Neha | CS | 92"
+  },
+  {
+    "title": "Count Total Students",
+    "difficulty": "Easy",
+    "description": "Count the number of students",
+    "question": "Write a SQL query to count total number of students in the database.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 78\n3 | Neha | CS | 92"
+  },
+  {
+    "title": "Students Sorted by Marks",
+    "difficulty": "Easy",
+    "description": "Order students by their marks",
+    "question": "Write a SQL query to display students sorted by marks in descending order.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 78\n3 | Neha | CS | 92"
+  },
+  {
+    "title": "Failed Students",
+    "difficulty": "Easy",
+    "description": "Find students who failed",
+    "question": "Write a SQL query to fetch students with marks less than 40.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 35\n3 | Neha | CS | 92"
+  },
+  {
+    "title": "Unique Courses",
+    "difficulty": "Easy",
+    "description": "List all distinct courses",
+    "question": "Write a SQL query to find all unique courses offered.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 78\n3 | Neha | CS | 92"
+  },
+  {
+    "title": "Students with Names Starting with A",
+    "difficulty": "Easy",
+    "description": "Filter students by name pattern",
+    "question": "Write a SQL query to find students whose names start with the letter 'A'.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 78\n3 | Anjali | CS | 92"
+  },
+  {
+    "title": "Maximum Marks",
+    "difficulty": "Easy",
+    "description": "Find highest marks scored",
+    "question": "Write a SQL query to find the maximum marks scored by any student.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 78\n3 | Neha | CS | 92"
+  },
+  {
+    "title": "Minimum Marks",
+    "difficulty": "Easy",
+    "description": "Find lowest marks scored",
+    "question": "Write a SQL query to find the minimum marks scored by any student.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 78\n3 | Neha | CS | 92"
+  },
+  {
+    "title": "Students in Range",
+    "difficulty": "Easy",
+    "description": "Find students within marks range",
+    "question": "Write a SQL query to find students scoring between 70 and 85 marks.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 78\n3 | Neha | CS | 92"
+  },
+  {
+    "title": "Students Count by Course",
+    "difficulty": "Medium",
+    "description": "Count students in each course",
+    "question": "Write a SQL query to count the number of students enrolled in each course.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 78\n3 | Neha | CS | 92"
+  },
+  {
+    "title": "Total Marks by Course",
+    "difficulty": "Medium",
+    "description": "Calculate sum of marks per course",
+    "question": "Write a SQL query to find the total marks obtained by students in each course.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 78\n3 | Neha | CS | 92"
+  },
+  {
+    "title": "Courses with High Performers",
+    "difficulty": "Medium",
+    "description": "Find courses with average marks above threshold",
+    "question": "Write a SQL query to find courses where average marks are greater than 75.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 78\n3 | Neha | CS | 92"
+  },
+  {
+    "title": "Second Highest Marks",
+    "difficulty": "Medium",
+    "description": "Find second highest scoring student",
+    "question": "Write a SQL query to find the student with the second highest marks.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 78\n3 | Neha | CS | 92"
+  },
+  {
+    "title": "Students Above Average",
+    "difficulty": "Medium",
+    "description": "Find students scoring above average",
+    "question": "Write a SQL query to find students whose marks are above the overall average.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 78\n3 | Neha | CS | 92"
+  },
+  {
+    "title": "Employee Details",
+    "difficulty": "Easy",
+    "description": "Retrieve all employee information",
+    "question": "Write a SQL query to fetch all employees from the employees table.",
+    "schemaInfo": "employees(emp_id, name, department, salary, hire_date)",
+    "sampleData": "101 | Rajesh | HR | 45000 | 2020-03-15\n102 | Priya | IT | 55000 | 2019-07-22\n103 | Ankit | Sales | 42000 | 2021-01-10"
+  },
+  {
+    "title": "High Salary Employees",
+    "difficulty": "Easy",
+    "description": "Find employees earning above threshold",
+    "question": "Write a SQL query to find employees with salary greater than 50000.",
+    "schemaInfo": "employees(emp_id, name, department, salary, hire_date)",
+    "sampleData": "101 | Rajesh | HR | 45000 | 2020-03-15\n102 | Priya | IT | 55000 | 2019-07-22\n103 | Ankit | Sales | 42000 | 2021-01-10"
+  },
+  {
+    "title": "Department-wise Salary",
+    "difficulty": "Medium",
+    "description": "Calculate average salary by department",
+    "question": "Write a SQL query to find the average salary for each department.",
+    "schemaInfo": "employees(emp_id, name, department, salary, hire_date)",
+    "sampleData": "101 | Rajesh | HR | 45000 | 2020-03-15\n102 | Priya | IT | 55000 | 2019-07-22\n103 | Ankit | Sales | 42000 | 2021-01-10"
+  },
+  {
+    "title": "Recently Hired Employees",
+    "difficulty": "Medium",
+    "description": "Find employees hired in last year",
+    "question": "Write a SQL query to find employees hired in the year 2021.",
+    "schemaInfo": "employees(emp_id, name, department, salary, hire_date)",
+    "sampleData": "101 | Rajesh | HR | 45000 | 2020-03-15\n102 | Priya | IT | 55000 | 2019-07-22\n103 | Ankit | Sales | 42000 | 2021-01-10"
+  },
+  {
+    "title": "Top 5 Earners",
+    "difficulty": "Medium",
+    "description": "Find highest paid employees",
+    "question": "Write a SQL query to fetch the top 5 highest-paid employees.",
+    "schemaInfo": "employees(emp_id, name, department, salary, hire_date)",
+    "sampleData": "101 | Rajesh | HR | 45000 | 2020-03-15\n102 | Priya | IT | 55000 | 2019-07-22\n103 | Ankit | Sales | 42000 | 2021-01-10"
+  },
+  {
+    "title": "Employees by Seniority",
+    "difficulty": "Medium",
+    "description": "Order employees by hire date",
+    "question": "Write a SQL query to list employees sorted by their hire date (oldest first).",
+    "schemaInfo": "employees(emp_id, name, department, salary, hire_date)",
+    "sampleData": "101 | Rajesh | HR | 45000 | 2020-03-15\n102 | Priya | IT | 55000 | 2019-07-22\n103 | Ankit | Sales | 42000 | 2021-01-10"
+  },
+  {
+    "title": "Salary Increment Analysis",
+    "difficulty": "Hard",
+    "description": "Calculate salary with increment",
+    "question": "Write a SQL query to show employee names with their current salary and a new salary after 15% increment.",
+    "schemaInfo": "employees(emp_id, name, department, salary, hire_date)",
+    "sampleData": "101 | Rajesh | HR | 45000 | 2020-03-15\n102 | Priya | IT | 55000 | 2019-07-22\n103 | Ankit | Sales | 42000 | 2021-01-10"
+  },
+  {
+    "title": "Department Head Count",
+    "difficulty": "Medium",
+    "description": "Count employees in each department",
+    "question": "Write a SQL query to find the number of employees in each department.",
+    "schemaInfo": "employees(emp_id, name, department, salary, hire_date)",
+    "sampleData": "101 | Rajesh | HR | 45000 | 2020-03-15\n102 | Priya | IT | 55000 | 2019-07-22\n103 | Ankit | Sales | 42000 | 2021-01-10"
+  },
+  {
+    "title": "Product Sales Report",
+    "difficulty": "Easy",
+    "description": "List all products with their prices",
+    "question": "Write a SQL query to fetch all products and their prices.",
+    "schemaInfo": "products(product_id, product_name, category, price, stock)",
+    "sampleData": "1 | Laptop | Electronics | 45000 | 25\n2 | Phone | Electronics | 15000 | 50\n3 | Desk | Furniture | 8000 | 15"
+  },
+  {
+    "title": "Low Stock Products",
+    "difficulty": "Easy",
+    "description": "Find products with low inventory",
+    "question": "Write a SQL query to find products with stock less than 20 units.",
+    "schemaInfo": "products(product_id, product_name, category, price, stock)",
+    "sampleData": "1 | Laptop | Electronics | 45000 | 25\n2 | Phone | Electronics | 15000 | 50\n3 | Desk | Furniture | 8000 | 15"
+  },
+  {
+    "title": "Expensive Products",
+    "difficulty": "Easy",
+    "description": "Find premium products",
+    "question": "Write a SQL query to list products priced above 20000.",
+    "schemaInfo": "products(product_id, product_name, category, price, stock)",
+    "sampleData": "1 | Laptop | Electronics | 45000 | 25\n2 | Phone | Electronics | 15000 | 50\n3 | Desk | Furniture | 8000 | 15"
+  },
+  {
+    "title": "Category-wise Product Count",
+    "difficulty": "Medium",
+    "description": "Count products in each category",
+    "question": "Write a SQL query to find the number of products in each category.",
+    "schemaInfo": "products(product_id, product_name, category, price, stock)",
+    "sampleData": "1 | Laptop | Electronics | 45000 | 25\n2 | Phone | Electronics | 15000 | 50\n3 | Desk | Furniture | 8000 | 15"
+  },
+  {
+    "title": "Total Inventory Value",
+    "difficulty": "Medium",
+    "description": "Calculate total stock value",
+    "question": "Write a SQL query to calculate the total value of inventory (price × stock) for all products.",
+    "schemaInfo": "products(product_id, product_name, category, price, stock)",
+    "sampleData": "1 | Laptop | Electronics | 45000 | 25\n2 | Phone | Electronics | 15000 | 50\n3 | Desk | Furniture | 8000 | 15"
+  },
+  {
+    "title": "Most Expensive Product by Category",
+    "difficulty": "Hard",
+    "description": "Find highest priced product in each category",
+    "question": "Write a SQL query to find the most expensive product in each category.",
+    "schemaInfo": "products(product_id, product_name, category, price, stock)",
+    "sampleData": "1 | Laptop | Electronics | 45000 | 25\n2 | Phone | Electronics | 15000 | 50\n3 | Desk | Furniture | 8000 | 15"
+  },
+  {
+    "title": "Orders with Customer Info",
+    "difficulty": "Medium",
+    "description": "Join orders with customer details",
+    "question": "Write a SQL query to fetch all orders along with customer names.",
+    "schemaInfo": "orders(order_id, customer_id, order_date, amount), customers(customer_id, name, email, city)",
+    "sampleData": "Orders: 1 | 101 | 2024-01-15 | 5000\nCustomers: 101 | Rahul | rahul@email.com | Delhi"
+  },
+  {
+    "title": "High Value Orders",
+    "difficulty": "Easy",
+    "description": "Find orders above certain amount",
+    "question": "Write a SQL query to find orders with amount greater than 10000.",
+    "schemaInfo": "orders(order_id, customer_id, order_date, amount)",
+    "sampleData": "1 | 101 | 2024-01-15 | 5000\n2 | 102 | 2024-01-16 | 15000\n3 | 103 | 2024-01-17 | 8000"
+  },
+  {
+    "title": "Monthly Sales Total",
+    "difficulty": "Medium",
+    "description": "Calculate total sales by month",
+    "question": "Write a SQL query to find the total sales amount for each month.",
+    "schemaInfo": "orders(order_id, customer_id, order_date, amount)",
+    "sampleData": "1 | 101 | 2024-01-15 | 5000\n2 | 102 | 2024-01-16 | 15000\n3 | 103 | 2024-02-17 | 8000"
+  },
+  {
+    "title": "Customers Without Orders",
+    "difficulty": "Hard",
+    "description": "Find customers who haven't ordered",
+    "question": "Write a SQL query to find customers who have not placed any orders.",
+    "schemaInfo": "orders(order_id, customer_id, order_date, amount), customers(customer_id, name, email, city)",
+    "sampleData": "Orders: 1 | 101 | 2024-01-15 | 5000\nCustomers: 101 | Rahul | rahul@email.com | Delhi, 102 | Sneha | sneha@email.com | Mumbai"
+  },
+  {
+    "title": "Top Spending Customers",
+    "difficulty": "Hard",
+    "description": "Find customers with highest total spending",
+    "question": "Write a SQL query to find the top 3 customers based on total order amount.",
+    "schemaInfo": "orders(order_id, customer_id, order_date, amount), customers(customer_id, name, email, city)",
+    "sampleData": "Orders: 1 | 101 | 2024-01-15 | 5000, 2 | 101 | 2024-01-20 | 3000\nCustomers: 101 | Rahul | rahul@email.com | Delhi"
+  },
+  {
+    "title": "Duplicate Records",
+    "difficulty": "Medium",
+    "description": "Find duplicate student names",
+    "question": "Write a SQL query to find students who have the same name.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 78\n3 | Vishal | IT | 82"
+  },
+  {
+    "title": "Rank Students by Marks",
+    "difficulty": "Hard",
+    "description": "Assign ranks based on marks",
+    "question": "Write a SQL query to rank students based on their marks (highest marks get rank 1).",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 78\n3 | Neha | CS | 92"
+  },
+  {
+    "title": "Nth Highest Marks",
+    "difficulty": "Hard",
+    "description": "Find Nth highest scoring student",
+    "question": "Write a SQL query to find the 3rd highest marks in the students table.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 78\n3 | Neha | CS | 92\n4 | Raj | IT | 88"
+  },
+  {
+    "title": "Students with Same Marks",
+    "difficulty": "Medium",
+    "description": "Find students with identical scores",
+    "question": "Write a SQL query to find groups of students who have scored the same marks.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 85\n3 | Neha | CS | 92"
+  },
+  {
+    "title": "Update Student Marks",
+    "difficulty": "Medium",
+    "description": "Modify marks for specific students",
+    "question": "Write a SQL query to increase marks by 5 for all students in CS course.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 78\n3 | Neha | CS | 92"
+  },
+  {
+    "title": "Delete Low Performers",
+    "difficulty": "Easy",
+    "description": "Remove records of failed students",
+    "question": "Write a SQL query to delete students with marks less than 35.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 30\n3 | Neha | CS | 92"
+  },
+  {
+    "title": "Courses with Low Enrollment",
+    "difficulty": "Medium",
+    "description": "Find courses with few students",
+    "question": "Write a SQL query to find courses that have less than 5 students enrolled.",
+    "schemaInfo": "students(id, name, course, marks)",
+    "sampleData": "1 | Vishal | CS | 85\n2 | Amit | IT | 78\n3 | Neha | CS | 92"
+  },
+  {
+    "title": "Year-wise Order Count",
+    "difficulty": "Medium",
+    "description": "Count orders by year",
+    "question": "Write a SQL query to count the number of orders placed in each year.",
+    "schemaInfo": "orders(order_id, customer_id, order_date, amount)",
+    "sampleData": "1 | 101 | 2023-01-15 | 5000\n2 | 102 | 2024-01-16 | 15000\n3 | 103 | 2024-02-17 | 8000"
+  }
+]

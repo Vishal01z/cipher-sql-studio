@@ -26,6 +26,9 @@ export default function Home() {
   const [isRunning, setIsRunning] = useState(false);
   const [copied, setCopied] = useState(false);
 
+  /* ✅ ADD: backend status */
+  const [backendOffline, setBackendOffline] = useState(false);
+
   /* ---------------- Theme Toggle ---------------- */
   const toggleDarkMode = () => {
     const mode = !darkMode;
@@ -55,7 +58,9 @@ export default function Home() {
       }
 
       setResult(data.rows || []);
+      setBackendOffline(false); // ✅ backend reachable
     } catch (err) {
+      setBackendOffline(true); // ✅ backend down
       setError(err.message || "Server error while executing query");
     } finally {
       setIsRunning(false);
@@ -82,24 +87,31 @@ export default function Home() {
           <div className="project-info">
             <span className="project-label">Project ID:</span>
             <code className="project-id">{projectId.slice(0, 8)}...</code>
-            <button 
-              className={`copy-btn ${copied ? 'copied' : ''}`}
+            <button
+              className={`copy-btn ${copied ? "copied" : ""}`}
               onClick={copyProjectId}
               title="Copy full project ID"
             >
-              {copied ? '✓' : '📋'}
+              {copied ? "✓" : "📋"}
             </button>
           </div>
         </div>
 
-        <button 
-          className="theme-toggle" 
+        <button
+          className="theme-toggle"
           onClick={toggleDarkMode}
           title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
         >
           {darkMode ? "☀️" : "🌙"}
         </button>
       </header>
+
+      {/* ✅ Backend status info */}
+      {backendOffline && (
+        <p style={{ color: "#facc15", margin: "8px 0", textAlign: "center" }}>
+          ⚠ Backend not connected — SQL execution unavailable
+        </p>
+      )}
 
       {/* ---------- SQL Editor ---------- */}
       <div className="editor-section">
@@ -108,29 +120,23 @@ export default function Home() {
           <span className="hint">Press Ctrl+Enter to run query</span>
         </div>
         <div className="editor-container">
-          <SqlEditor
-            query={query}
-            setQuery={setQuery}
-            darkMode={darkMode}
-          />
+          <SqlEditor query={query} setQuery={setQuery} darkMode={darkMode} />
         </div>
       </div>
 
       {/* ---------- Toolbar ---------- */}
       <div className="toolbar">
-        <button
-          className="run-btn"
-          onClick={runQuery}
-          disabled={isRunning}
-        >
+        <button className="run-btn" onClick={runQuery} disabled={isRunning}>
           <span className="btn-icon">{isRunning ? "⟳" : "▶"}</span>
-          <span className="btn-text">{isRunning ? "Running..." : "Run Query"}</span>
+          <span className="btn-text">
+            {isRunning ? "Running..." : "Run Query"}
+          </span>
         </button>
-        
+
         <div className="toolbar-info">
           {result.length > 0 && (
             <span className="result-count">
-              {result.length} row{result.length !== 1 ? 's' : ''} returned
+              {result.length} row{result.length !== 1 ? "s" : ""} returned
             </span>
           )}
         </div>
